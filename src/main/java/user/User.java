@@ -12,6 +12,10 @@ public class User {
     private int pinNumber;
     private List<Account> accountsList;
 
+    public User(){
+
+    }
+
     public String getFirstName() {
         return firstName;
     }

@@ -10,17 +10,20 @@ public abstract class Account {
     private int status;
     private int overdraft;
     private AccountHistory accountHistory;
-    // private String accountType;
 
+    private String accountType;
 
+    protected void createAccount(){
+        accountNumber = Long.valueOf(100);
+    }
 
     public Long getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(Long accountNumber) {
-        this.accountNumber = accountNumber;
-    }
+//    public void setAccountNumber(Long accountNumber) {
+//        this.accountNumber = accountNumber;
+//    }
 
     public Double getBalance() {
         return balance;
@@ -52,6 +55,14 @@ public abstract class Account {
 
     public void setOverdraft(int overdraft) {
         this.overdraft = overdraft;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
 
 }

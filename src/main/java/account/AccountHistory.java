@@ -16,4 +16,18 @@ public class AccountHistory {
     protected void recordHistoryTransfer (Double amount, Long accountTransfer ){
 
     }
+
+    protected void nameChange (String name){
+
+    }
+
+    protected void statusChange(){
+
+    }
+
+    protected void interestChange(){
+
+    }
+
+
 }
