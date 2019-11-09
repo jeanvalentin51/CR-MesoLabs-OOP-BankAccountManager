@@ -7,13 +7,16 @@ public abstract class Account {
     private Long accountNumber;
     private Double balance;
     private String userName;
-    private int status;
-    private int overdraft;
+    private int status;    // 0 for closed, 1 for opened, 2 for frozen
+    private int overdraft; // 0 for off, 1 for on, 2 for auto-transfer
+    private Account overdraftTransfer;
     private AccountHistory accountHistory;
 
     private String accountType;
 
-    public Account(String userName, ){
+    public Account(String userName){
+
+        this.status = 1;
         this.accountNumber = Long.valueOf(100);
     }
 
@@ -66,12 +69,29 @@ public abstract class Account {
     }
 
 
-    protected void notThis(){
+    //used to check if User is allowed to perform actions on this account
+    protected boolean checkStatus () {
+        if (this.status == 0 || this.status == 2) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 
+    //used to check if an account can withdraw beyond its limits
+    protected boolean checkOverdraft(){
+
+        if(this.overdraft == 0 || (this.overdraft == 2 && this.overdraftTransfer.balance <=0)){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
 
-    //getters and setters
+    // getters and setters
 
     public Long getAccountNumber() {
         return accountNumber;
