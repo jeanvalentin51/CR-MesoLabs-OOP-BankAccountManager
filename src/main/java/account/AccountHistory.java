@@ -61,6 +61,7 @@ public class AccountHistory {
 
     }
 
+
     protected  void recordHistoryWithdraw (Double amount){
         Timestamp timestamp = new Timestamp((new Date().getTime()));
         String withdrawalTransaction = "Withdrew " + amount + " at " + timestamp;
