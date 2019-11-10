@@ -29,7 +29,11 @@ class AccountTest {
         testAccount.depositWithdraw(Double.valueOf(-75));
 
         Double actual = testAccount.getBalance();
+        Assert.assertEquals(expected,actual);
 
+        expected = Double.valueOf(525);
+        testAccount.depositWithdraw(Double.valueOf(25));
+        actual = testAccount.getBalance();
         Assert.assertEquals(expected,actual);
 
     }
