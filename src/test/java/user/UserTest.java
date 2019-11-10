@@ -10,17 +10,4 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
-    @Test
-    void createAccoutn() {
-        AccountWarehouse testWarehouse = new AccountWarehouse();
-        Checking testAccount = new Checking(testWarehouse);
-        Long expected = Long.valueOf(1000001);
-        Long actual;
-
-        testAccount.createAccount();
-        actual = testAccount.getAccountNumber();
-        Assert.assertEquals(expected,actual);
-
-
-    }
 }

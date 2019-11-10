@@ -19,6 +19,11 @@ public abstract class Account {
 //----------- constructor -------------------------------
     public Account(AccountWarehouse warehouse){
         this.warehouse = warehouse;
+        this.accountHistory = new AccountHistory();
+        // TODO vv
+        this.accountType = "";
+        this.status = 0;
+        this.overdraft = 0;
     }
 
 //-------- business logic ---------------------------
@@ -27,7 +32,7 @@ public abstract class Account {
         warehouse.createAccount(this);
     }
 
-    public void depositWithdraw(Long amount){
+    public void depositWithdraw(Double amount){
         this.balance += amount;
     }
 
