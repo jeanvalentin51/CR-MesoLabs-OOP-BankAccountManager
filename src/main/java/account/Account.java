@@ -1,29 +1,45 @@
 package account;
 
+import sun.tools.tree.DoubleExpression;
+
 public abstract class Account {
 
 
 
     private Long accountNumber;
     private Double balance;
-    private String userName;
+    private String userPin;
     private int status;
     private int overdraft;
     private AccountHistory accountHistory;
-
+    private AccountWarehouse warehouse;
     private String accountType;
 
-    protected void createAccount(){
-        accountNumber = Long.valueOf(100);
+
+//----------- constructor -------------------------------
+    public Account(AccountWarehouse warehouse){
+        this.warehouse = warehouse;
     }
+
+//-------- business logic ---------------------------
+
+    public void createAccount(){
+        warehouse.createAccount(this);
+    }
+
+    public void depositWithdraw(Long amount){
+        this.balance += amount;
+    }
+
+
+// ---------- setters and getters -------------------------------------
 
     public Long getAccountNumber() {
         return accountNumber;
     }
-
-//    public void setAccountNumber(Long accountNumber) {
-//        this.accountNumber = accountNumber;
-//    }
+    public void setAccountNumber(Long accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
     public Double getBalance() {
         return balance;
@@ -33,12 +49,12 @@ public abstract class Account {
         this.balance = balance;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserPin() {
+        return userPin;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserPin(String pin) {
+        this.userPin = pin;
     }
 
     public int getStatus() {
