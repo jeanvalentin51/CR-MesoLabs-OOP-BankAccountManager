@@ -2,9 +2,10 @@ package user;
 
 import account.Account;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class UserProfile {
 
 
     private String firstName;
@@ -12,7 +13,11 @@ public class User {
     private int pinNumber;
     private List<Account> accountsList;
 
-    public User(){
+    public UserProfile(){
+        firstName = new String();
+        lastName = new String();
+        pinNumber = 0;
+        accountsList = new ArrayList<Account>();
 
     }
 
@@ -40,4 +45,6 @@ public class User {
         this.pinNumber = pinNumber;
     }
 
+
+    public void userMenu(String UserInput){}
 }
