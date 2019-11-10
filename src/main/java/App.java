@@ -8,9 +8,8 @@ public class App {
     private Scanner input = new Scanner(System.in);
     private void output(String msg) { System.out.println(msg); };
     private int currentPIN;
-    private String currentFirst;
-    private String currentLast;
     private UserWarehouse client = new UserWarehouse();
+    private UserProfile currentUser;
 
     public void App(){
         output(welcome);
@@ -46,13 +45,25 @@ public class App {
     }
 
     public void logginMenu(){
+        if( authenticateUser() ){
+            currentUser = client.getUserProfile(currentPIN);
+        }
     }
 
     public void newUserMenu(){
+        if ( !authenticateUser() ){ output("User Already Exists"); newUserMenu();}
+        else{
+            output("Enter your first name");
+            String firstName = input.nextLine();
+            output ("Enter your last name");
+            String lastName = input.nextLine();
+            currentUser = new UserProfile(currentPIN, firstName, lastName);
+            client.addUserProfile(currentUser);
+        }
     }
 
     public boolean authenticateUser(){
-        output("Enter you're PIN");
+        output("Enter your PIN");
         currentPIN = input.nextInt();
 
         return client.getUserProfile(currentPIN) != null;
