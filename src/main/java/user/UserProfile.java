@@ -13,10 +13,10 @@ public class UserProfile {
     private int pinNumber;
     private List<Account> accountsList;
 
-    public UserProfile(){
+    public UserProfile(Integer pin){
         firstName = new String();
         lastName = new String();
-        pinNumber = 0;
+        pinNumber = pin;
         accountsList = new ArrayList<Account>();
 
     }
