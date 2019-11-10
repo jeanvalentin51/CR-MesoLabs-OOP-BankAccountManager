@@ -10,6 +10,6 @@ public class Investments extends Account {
         super.setUserPin("0050");
         super.setOverdraft(1);
         super.setStatus(1);
-        super.setAccountType("");
+        super.setAccountType("Investments");
     }
 }
