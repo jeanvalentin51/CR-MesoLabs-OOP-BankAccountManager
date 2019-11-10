@@ -1,5 +1,6 @@
 package account;
 
+import java.util.List;
 import java.util.Random;
 
 public abstract class Account {
@@ -99,7 +100,13 @@ public abstract class Account {
     }
 
     public String getHistory(){
-        return accountHistory.getAllTransactions().toString();
+        return toString(accountHistory.getAllTransactions());
     }
 
+
+    public String toString(List<String> list){
+
+        return "Account: " + this.getAccountNumber() + "\n" + list.toString().replace(", ", "\n")
+                .replace("[", "").replace("]", "\n");
+    }
 }
