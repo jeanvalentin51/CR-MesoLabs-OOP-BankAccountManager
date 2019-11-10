@@ -1,28 +1,20 @@
 package account;
 
-import sun.tools.tree.DoubleExpression;
-
 public abstract class Account {
 
 
 
     private Long accountNumber;
     private Double balance;
-<<<<<<< HEAD
     private String userName;
     private int status;    // 0 for closed, 1 for opened, 2 for frozen
     private int overdraft; // 0 for off, 1 for on, 2 for auto-transfer
     private Account overdraftTransfer;
-=======
     private String userPin;
-    private int status;
-    private int overdraft;
->>>>>>> dev
     private AccountHistory accountHistory;
     private AccountWarehouse warehouse;
     private String accountType;
 
-<<<<<<< HEAD
     public Account(String userName){
 
         this.status = 1;
@@ -100,9 +92,6 @@ public abstract class Account {
     }
 
 
-    // getters and setters
-=======
-
 //----------- constructor -------------------------------
     public Account(AccountWarehouse warehouse){
         this.warehouse = warehouse;
@@ -125,17 +114,15 @@ public abstract class Account {
 
 
 // ---------- setters and getters -------------------------------------
->>>>>>> dev
+
 
     public Long getAccountNumber() {
         return accountNumber;
     }
-<<<<<<< HEAD
-=======
+
     public void setAccountNumber(Long accountNumber) {
         this.accountNumber = accountNumber;
     }
->>>>>>> dev
 
     public Double getBalance() {
         return balance;
