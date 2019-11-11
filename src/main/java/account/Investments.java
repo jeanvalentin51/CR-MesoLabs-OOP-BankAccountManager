@@ -7,5 +7,7 @@ public class Investments extends Account {
     public Investments(String userPin){
 
         super(userPin);
+        super.setAccountType("Investments");
     }
+
 }

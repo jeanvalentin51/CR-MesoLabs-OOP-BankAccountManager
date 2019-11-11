@@ -11,6 +11,7 @@ public abstract class Account {
     private int status;
     private int overdraft;
     private AccountHistory accountHistory;
+    public String accountType;
 
 //----------- constructor -------------------------------
 
@@ -42,6 +43,17 @@ public abstract class Account {
             return "Insufficient funds";
     }
 
+    public String transfer(Account transferTo, Double amount){
+        if(checkBalance(amount)){
+            this.balance -= amount;
+            transferTo.balance += amount;
+            accountHistory.recordHistoryOutgoingTransfer(amount, transferTo.accountNumber);
+            transferTo.accountHistory.recordHistoryIncomingTransfer(amount, this.accountNumber);
+            return null;
+        }else
+            return "Insufficient funds";
+    }
+
 // -----------------------------------------------
 
     public boolean checkBalance(Double amount){
@@ -50,6 +62,7 @@ public abstract class Account {
 
         return false;
     }
+
 
 
 // ---------- setters and getters -------------------------------------
@@ -99,7 +112,28 @@ public abstract class Account {
         this.overdraft = overdraft;
     }
 
-    public String getHistory(){
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+
+    public String getHistoryAll(){
+        return toString(accountHistory.getAllTransactions());
+    }
+
+    public String getHistoryDeposit(){
+        return toString(accountHistory.getDeposits());
+    }
+
+    public String getHistoryWithdraw(){
+        return toString(accountHistory.getWithdrawals());
+    }
+
+    public String getHistoryTransfer(){
         return toString(accountHistory.getAllTransactions());
     }
 
@@ -109,4 +143,5 @@ public abstract class Account {
         return "Account: " + this.getAccountNumber() + "\n" + list.toString().replace(", ", "\n")
                 .replace("[", "").replace("]", "\n");
     }
+
 }
