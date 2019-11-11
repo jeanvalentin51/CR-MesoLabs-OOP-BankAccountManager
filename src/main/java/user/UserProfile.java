@@ -13,12 +13,11 @@ public class UserProfile {
     private int pinNumber;
     private List<Account> accountsList;
 
-    public UserProfile(){
-        firstName = new String();
-        lastName = new String();
-        pinNumber = 0;
+    public UserProfile(Integer pin, String first, String last){
+        firstName = first;
+        lastName = last;
+        pinNumber = pin;
         accountsList = new ArrayList<Account>();
-
     }
 
     public String getFirstName() {
